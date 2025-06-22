@@ -1,0 +1,182 @@
+/* styles/globals.css */
+/* Light Theme (default) */
+:root {
+  --main-bg: #f9fafb;
+  --navbar-bg: #ffffff;
+  --sidebar-bg: #f1f5f9;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --accent-cyan: #06b6d4;
+  --glow-shadow: rgba(6, 182, 212, 0.3);
+  --card-bg: #ffffff;
+  --button-bg: #e2e8f0;
+  --transition-speed: 0.3s;
+}
+
+/* Dark Theme */
+.dark {
+  --main-bg: #161e2c;
+  --navbar-bg: #1c222d;
+  --sidebar-bg: #12151a;
+  --text-primary: #ffffff;
+  --text-secondary: #e0e0e0;
+  --accent-cyan: #42f8f5;
+  --glow-shadow: rgba(66, 248, 245, 0.6);
+  --card-bg: #1a1e26;
+  --button-bg: #12151a;
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--main-bg);
+  color: var(--text-primary);
+  min-height: 100vh;
+
+
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+ 
+
+}
+
+.main-content {
+  
+  display: flex;
+  flex: 1;
+}
+
+.content-area {
+  flex: 1;
+  padding: 2rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+}
+
+a {
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: all var(--transition-speed) ease;
+}
+
+button {
+  cursor: pointer;
+  transition: all var(--transition-speed) ease;
+}
+
+/* Glow effect */
+.glow-text {
+  text-shadow: 0 0 5px var(--accent-cyan), 0 0 10px var(--glow-shadow);
+}
+
+.glow-hover:hover {
+  box-shadow: 0 0 10px var(--accent-cyan), 0 0 20px var(--glow-shadow);
+  color: var(--accent-cyan);
+}
+
+/* Responsive breakpoints */
+@media (max-width: 768px) {
+  .content-area {
+    padding: 1rem;
+  }
+}
+
+/* Add to your global styles */
+.tool-card {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tool-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 15px -3px rgba(66, 248, 245, 0.1);
+}
+
+.tool-card-button {
+  transition: background-color 0.2s ease;
+}
+
+/* Animations */
+@keyframes float1 {
+
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(-10px, -10px);
+  }
+}
+
+@keyframes float2 {
+
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(10px, 10px);
+  }
+}
+
+@keyframes float3 {
+
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(-15px, 5px);
+  }
+}
+
+@keyframes float4 {
+
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(5px, -15px);
+  }
+}
+
+/* Button transitions */
+.btn-primary {
+  background: linear-gradient(to right, #42f8f5, #4287f5);
+  transition: all 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-primary:hover {
+  box-shadow: 0 0 20px rgba(66, 248, 245, 0.5);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: rgba(66, 248, 245, 0.1);
+}

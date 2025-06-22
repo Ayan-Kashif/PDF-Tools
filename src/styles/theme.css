@@ -1,0 +1,89 @@
+/* styles/theme.css */
+/* Buttons */
+.btn {
+    background-color: var(--button-bg);
+    color: var(--text-primary);
+    border: 1px solid var(--accent-cyan);
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 500;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .btn:hover {
+    background-color: var(--accent-cyan);
+    color: var(--button-bg);
+    box-shadow: 0 0 10px var(--accent-cyan), 0 0 20px var(--glow-shadow);
+  }
+  
+  .btn::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      to bottom right,
+      transparent,
+      transparent,
+      transparent,
+      var(--accent-cyan)
+    );
+    transform: rotate(45deg);
+    transition: all 0.6s ease;
+    opacity: 0;
+  }
+  
+  .btn:hover::before {
+    opacity: 1;
+    animation: shine 1.5s infinite;
+  }
+  
+  @keyframes shine {
+    0% {
+      transform: rotate(45deg) translate(-30%, -30%);
+    }
+    100% {
+      transform: rotate(45deg) translate(30%, 30%);
+    }
+  }
+  
+  /* Cards */
+  .card {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all var(--transition-speed) ease;
+    border: 1px solid rgba(66, 248, 245, 0.1);
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(66, 248, 245, 0.2);
+    border-color: var(--accent-cyan);
+  }
+  
+  /* Tool Grid */
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  
+  @media (max-width: 1024px) {
+    .tools-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 640px) {
+    .tools-grid {
+      grid-template-columns: 1fr;
+    }
+  }
