@@ -20,7 +20,7 @@ const mammoth = require("mammoth");
 const PptxGenJS = require('pptxgenjs');
 const { StandardFonts } = require("pdf-lib");
 const pdf = require('pdf-parse');
-const poppler = require('pdf-poppler');
+// const poppler = require('pdf-poppler');
 const fsp = require('fs/promises');
 
 const AdmZip = require('adm-zip');
@@ -485,7 +485,7 @@ const pdfToJpg = async (pdfPath, originalname) => {
     };
 
     console.log(`Starting conversion of: ${pdfPath}`);
-    await poppler.convert(pdfPath, opts);
+    // await poppler.convert(pdfPath, opts);
     console.log('PDF conversion completed');
 
     // Verify JPG files were created
