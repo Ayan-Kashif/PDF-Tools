@@ -13,6 +13,10 @@ export default function Contact() {
     const localTheme = localStorage.getItem('theme');
     if (localTheme) setTheme(localTheme);
   }, []);
+    useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
 
   const handleSendEmail = (e) => {
     e.preventDefault();
