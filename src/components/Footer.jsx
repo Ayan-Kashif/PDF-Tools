@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { FaGithub, FaTwitter, FaLinkedin, FaYoutube } from 'react-icons/fa';
+import { FaGithub, FaTwitter, FaLinkedin, FaYoutube,FaFacebook,FaInstagram } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
@@ -30,7 +30,7 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className={`text-2xl font-bold ${brandText}`}>
               <span className="bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
-                PDF Tools – Multi Tool Hub
+                FIXI PDF – Multi Tool Hub
               </span>
             </h3>
             <p className={`${textColor} max-w-xs`}>
@@ -70,17 +70,15 @@ const Footer = () => {
             <h4 className={`text-lg font-semibold mb-2 ${brandText}`}>Connect With Us</h4>
 
             <div className="flex items-start gap-4">
-              <a href="#" className={`${linkColor} text-xl`} aria-label="GitHub">
-                <FaGithub />
-              </a>
-              <a href="#" className={`${linkColor} text-xl`} aria-label="Twitter">
+            
+              <a href="https://x.com/FixiPdf" className={`${linkColor} text-xl`} aria-label="Twitter">
                 <FaTwitter />
               </a>
-              <a href="#" className={`${linkColor} text-xl`} aria-label="LinkedIn">
-                <FaLinkedin />
+              <a href="https://www.instagram.com/fixipdf/" className={`${linkColor} text-xl`} aria-label="LinkedIn">
+                <FaInstagram />
               </a>
-              <a href="#" className={`${linkColor} text-xl`} aria-label="YouTube">
-                <FaYoutube />
+              <a href="https://www.facebook.com/fixipdf/" className={`${linkColor} text-xl`} aria-label="YouTube">
+                <FaFacebook />
               </a>
             </div>
           </div>
