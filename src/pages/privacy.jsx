@@ -1,9 +1,13 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { FaShieldAlt, FaLock, FaUserCog, FaDatabase, FaCookie } from 'react-icons/fa';
 
 const PrivacyPolicy = () => {
+    useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="privacy-policy-page">
       <Helmet>
