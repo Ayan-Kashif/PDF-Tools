@@ -9,6 +9,10 @@ export default function About() {
     const storedTheme = localStorage.getItem('theme');
     if (storedTheme !== theme) setTheme(storedTheme);
   }, []);
+    useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
 
   const isDark = theme === 'dark';
 
