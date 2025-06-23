@@ -14,7 +14,7 @@ const Footer = () => {
 
   const isDark = theme === 'dark';
 
-  const bgColor = isDark ? 'bg-gray-900' : 'bg-gray-100';
+  const bgColor = isDark ? 'bg-gray-900' : 'bg-[#f9fafb';
   const textColor = isDark ? 'text-gray-300' : 'text-gray-700';
   const linkColor = isDark ? 'text-gray-400 hover:text-white' : 'text-gray-500 hover:text-black';
   const borderColor = isDark ? 'border-gray-800' : 'border-gray-300';
@@ -39,7 +39,7 @@ const Footer = () => {
           </div>
 
           {/* Column 2 - Quick Links */}
-          <div className="space-y-4">
+          <div className="">
             <h4 className={`text-lg font-semibold ${brandText}`}>Quick Links</h4>
             <ul className="space-y-2">
               <li>
@@ -66,9 +66,10 @@ const Footer = () => {
           </div>
 
           {/* Column 3 - Social Media */}
-          <div className="space-y-4">
-            <h4 className={`text-lg font-semibold ${brandText}`}>Connect With Us</h4>
-            <div className="flex space-x-4">
+          <div className="text-left">
+            <h4 className={`text-lg font-semibold mb-2 ${brandText}`}>Connect With Us</h4>
+
+            <div className="flex items-start gap-4">
               <a href="#" className={`${linkColor} text-xl`} aria-label="GitHub">
                 <FaGithub />
               </a>
@@ -83,6 +84,8 @@ const Footer = () => {
               </a>
             </div>
           </div>
+
+
         </div>
 
         {/* Footer Bottom */}
@@ -97,3 +100,4 @@ const Footer = () => {
 };
 
 export default Footer;
+
