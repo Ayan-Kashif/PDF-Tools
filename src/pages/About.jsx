@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React,{ useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaLightbulb, FaCode, FaUsers } from 'react-icons/fa';
 
