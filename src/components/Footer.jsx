@@ -89,7 +89,7 @@ const Footer = () => {
         {/* Footer Bottom */}
         <div className={`border-t ${borderColor} pt-8 text-center`}>
           <p className="text-sm text-gray-500">
-            © {new Date().getFullYear()} PDF Tools. All Rights Reserved.
+            © {new Date().getFullYear()} FIXI PDF. All Rights Reserved.
           </p>
         </div>
       </div>
