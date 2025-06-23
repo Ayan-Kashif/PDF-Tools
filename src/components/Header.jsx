@@ -104,8 +104,7 @@ const Header = ({ sidebarOpen, setSidebarOpen }) => {
               {sidebarOpen ? <FaTimes /> : <FaBars />}
             </button>
             <Link to="/" className="flex items-center space-x-2">
-              <FaBrain className="text-2xl text-purple-600 drop-shadow" />
-              <span className={`text-lg sm:text-xl font-semibold tracking-wide ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>PDF Tools</span>
+              <img src="/logo.png" className='w-[160px]' alt="" />
             </Link>
           </div>
 
