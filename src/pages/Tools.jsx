@@ -246,6 +246,10 @@ const Tools = () => {
     const storedTheme = localStorage.getItem('theme');
     setTheme(storedTheme === 'dark' ? 'dark' : 'light');
   }, []);
+    useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
 
   const iconMap = {
     'merge-pdf': <FaObjectUngroup className="text-purple-500" />,
