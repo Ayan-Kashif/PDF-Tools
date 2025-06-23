@@ -30,7 +30,7 @@ const TermsOfService = () => {
   return (
     <div className={`min-h-screen ${bgBase}`}>
       <Helmet>
-        <title>Terms of Service | YourSiteName</title>
+        <title>Terms of Service | FIXI PDF</title>
         <meta name="description" content="Review our Terms of Service governing your use of our platform and services." />
       </Helmet>
 
@@ -132,7 +132,7 @@ const TermsOfService = () => {
         <section className={`rounded-lg shadow-sm p-6 ${bgCard}`}>
           <h2 className="text-2xl font-semibold mb-4">Limitation of Liability</h2>
           <p>
-            In no event shall YourSiteName, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable
+            In no event shall FIXI PDF, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable
             for any indirect, incidental, special, consequential or punitive damages resulting from your use of our services.
           </p>
         </section>
@@ -156,8 +156,8 @@ const TermsOfService = () => {
             If you have any questions about these Terms, please contact us at:
           </p>
           <p className="mt-2">
-            <a href="mailto:legal@yoursite.com" className={`${textAccent} hover:underline`}>
-              legal@pdftools.com
+            <a href="/" className={`${textAccent} hover:underline`}>
+              legal@fixipdf.com
             </a>
           </p>
         </section>
@@ -173,7 +173,7 @@ const TermsOfService = () => {
             Back to Home
           </Link>
           <p className={`${textSubtle} text-sm`}>
-            © {new Date().getFullYear()} YourSiteName. All rights reserved.
+            © {new Date().getFullYear()} FIXI PDF. All rights reserved.
           </p>
         </div>
       </footer>
