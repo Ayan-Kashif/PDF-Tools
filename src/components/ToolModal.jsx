@@ -883,9 +883,7 @@ const ToolModal = ({ tool, onClose }) => {
         'add-numbers': '/api/pdf/addNumbers'
       };
 
-      const baseURL = process.env.NODE_ENV === 'development'
-        ? 'http://localhost:5000'
-        : ''; // Empty for production
+     const baseURL = import.meta.env.VITE_APP_API_URL
       // Add this right before the axios.post call
       console.log('FormData contents:');
       for (let [key, value] of formData.entries()) {
