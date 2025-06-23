@@ -11,7 +11,7 @@ const PrivacyPolicy = () => {
   return (
     <div className="privacy-policy-page">
       <Helmet>
-        <title>Privacy Policy | YourSiteName</title>
+        <title>Privacy Policy | FIXI PDF</title>
         <meta name="description" content="Read our comprehensive privacy policy detailing how we collect, use, and protect your data." />
       </Helmet>
 
@@ -30,7 +30,7 @@ const PrivacyPolicy = () => {
             <FaLock className="section-icon" />
             <h2>Data Protection Commitment</h2>
           </div>
-          <p>At YourSiteName, we are committed to protecting your privacy and ensuring the security of your personal information. This policy outlines how we collect, use, and safeguard your data when you use our services.</p>
+          <p>At FIXI PDF, we are committed to protecting your privacy and ensuring the security of your personal information. This policy outlines how we collect, use, and safeguard your data when you use our services.</p>
         </section>
 
         <section className="privacy-section">
@@ -104,14 +104,14 @@ const PrivacyPolicy = () => {
         <section className="privacy-section contact-section">
           <h2>Contact Us</h2>
           <p>If you have questions about this policy or your data:</p>
-          <p>Email: <a href="mailto:privacy@yoursite.com">privacy@yoursite.com</a></p>
+          <p>Email: <a href="/">privacy@fixipdf.com</a></p>
         </section>
       </main>
 
       <footer className="privacy-footer">
         <div className="container">
           <Link to="/" className="back-home">← Back to Home</Link>
-          <p className="copyright">© {new Date().getFullYear()} YourSiteName. All rights reserved.</p>
+          <p className="copyright">© {new Date().getFullYear()} FIXI PDF. All rights reserved.</p>
         </div>
       </footer>
     </div>
