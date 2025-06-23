@@ -13,6 +13,10 @@ const TermsOfService = () => {
     const storedTheme = localStorage.getItem('theme');
     setTheme(storedTheme || 'light');
   }, []);
+    useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
 
   const isDark = theme === 'dark';
 
