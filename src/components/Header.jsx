@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
 
@@ -6,7 +6,7 @@ import { FaBrain, FaBars, FaTimes, FaMoon, FaSun, FaFilePdf, FaFileWord, FaFileP
 
 const allTools = [
   { id: 'merge-pdf', name: 'Merge PDF', description: 'Combine multiple PDF files', icon: <FaFilePdf />, category: 'pdf' },
-  { id: 'split-pdf', name: 'Split PDF', description: 'Divide a PDF into multiple documents', icon: <FaFilePdf />, category: 'pdf' },
+  { id: 'split-pdf', name: 'Split PDF', description: 'Divide a PDF ', icon: <FaFilePdf />, category: 'pdf' },
   { id: 'compress-pdf', name: 'Compress PDF', description: 'Reduce PDF file size', icon: <FaCompressAlt />, category: 'pdf' },
   { id: 'pdf-to-word', name: 'PDF to Word', description: 'Convert PDF to Word', icon: <FaFileWord />, category: 'pdf' },
   { id: 'word-to-pdf', name: 'Word to PDF', description: 'Convert Word to PDF', icon: <FaFilePdf />, category: 'pdf' },
@@ -41,6 +41,51 @@ const Header = ({ sidebarOpen, setSidebarOpen }) => {
     localStorage.setItem('theme', theme);
   }, [theme]);
 
+  const panelRef = useRef(null);
+
+
+  const renderToolSection = (title, toolIds) => (
+    <div>
+      <h3 className="text-lg font-semibold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">{title}</h3>
+      <div className="space-y-4">
+        {toolIds.map(id => {
+          const tool = allTools.find(t => t.id === id);
+          return tool && (
+            <Link
+              to={`/tools/${tool.id}`}
+              key={tool.id}
+              className="flex items-start gap-3 hover:text-cyan-400 transition"
+            >
+              {/* Icon slightly lowered for visual alignment */}
+              <div className="text-2xl mt-1">{tool.icon}</div>
+
+              {/* Content aligned to start at the top next to icon */}
+              <div className="text-start">
+                <h4 className="font-medium text-sm leading-tight">{tool.name}</h4>
+                <p className="text-xs text-gray-500 dark:text-gray-400 leading-snug">{tool.description}</p>
+              </div>
+            </Link>
+
+          );
+        })}
+      </div>
+    </div>
+  );
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (panelRef.current && !panelRef.current.contains(event.target)) {
+        setToolsDropdownOpen(false); // Close panel
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
   const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
     localStorage.setItem('theme', newTheme);
@@ -48,11 +93,10 @@ const Header = ({ sidebarOpen, setSidebarOpen }) => {
   };
 
   return (
-    <header className={`fixed top-0 left-0 w-full z-50 transition duration-300 ${
-      theme === 'dark'
-        ? 'bg-[#0f172a]/70 backdrop-blur-md border-b border-gray-800 shadow-lg'
-        : 'bg-white/70 backdrop-blur-md border-b border-gray-200 text-gray-700 shadow-md'
-    }`}>
+    <header className={`fixed top-0 left-0 w-full z-50 transition duration-300 ${theme === 'dark'
+      ? 'bg-[#0f172a]/70 backdrop-blur-md border-b border-gray-800 shadow-lg'
+      : 'bg-white/70 backdrop-blur-md border-b border-gray-200 text-gray-700 shadow-md'
+      }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-3">
           <div className="flex items-center space-x-4">
@@ -79,82 +123,48 @@ const Header = ({ sidebarOpen, setSidebarOpen }) => {
               </button>
 
               {/* Tools Dropdown Panel */}
-              <div className={`absolute top-full w-[1000px] left-[-24] right-10 mt-4 px-6 py-4 z-50 rounded-xl border transition-all duration-300 ease-in-out
-                ${theme === 'dark' ? 'bg-[#0f172a] text-white border-gray-700' : 'bg-white text-black border-gray-200'}
-                ${toolsDropdownOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}
-              `}
-              style={{ maxHeight: 'calc(100vh - 100px)', overflow: 'hidden' }}>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                  {/* Convert PDF */}
-                  <div>
-                    <h3 className="text-lg font-semibold mb-3 text-purple-600">Convert PDF</h3>
-                    <div className="space-y-3">
-                      {[
-                        'pdf-to-word', 'word-to-pdf', 'pdf-to-ppt', 'ppt-to-pdf',
-                        'pdf-to-excel', 'excel-to-pdf', 'pdf-to-jpg', 'jpg-to-pdf'
-                      ].map(id => {
-                        const tool = allTools.find(t => t.id === id);
-                        return tool && (
-                          <Link to={`/tools/${tool.id}`} key={tool.id} className="flex items-start space-x-2 hover:text-purple-600 transition">
-                            <div className="text-2xl">{tool.icon}</div>
-                            <div>
-                              <h4 className="font-semibold text-sm">{tool.name}</h4>
-                              <p className="text-xs text-gray-500 dark:text-gray-400">{tool.description}</p>
-                            </div>
-                          </Link>
-                        );
-                      })}
-                    </div>
-                  </div>
+              <div
+                ref={panelRef}
+                className={`
+        absolute top-full left-[-300px]  transform -translate-x-1/2
+        w-[1000px] mt-4 px-6 py-5 z-50 rounded-xl border
+        transition-all duration-300 ease-in-out shadow-lg
+        ${theme === 'dark' ? 'bg-[#0f172a] text-white border-gray-700' : 'bg-white text-black border-gray-200'}
+        ${toolsDropdownOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}
+      `}
+                style={{ maxHeight: 'calc(100vh - 100px)', overflow: 'hidden' }}
+              >
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+                  {/* Section 1: Convert PDF */}
+                  {renderToolSection('Convert PDF', [
+                    'pdf-to-word', 'word-to-pdf', 'pdf-to-ppt', 'ppt-to-pdf',
+                    'pdf-to-excel', 'excel-to-pdf', 'pdf-to-jpg', 'jpg-to-pdf'
+                  ])}
 
-                  {/* Edit & Organize */}
-                  <div>
-                    <h3 className="text-lg font-semibold mb-3 text-purple-600">Edit & Organize</h3>
-                    <div className="space-y-3">
-                      {['merge-pdf', 'split-pdf', 'organize-pdf', 'edit-pdf', 'rotate-pdf', 'add-watermark'].map(id => {
-                        const tool = allTools.find(t => t.id === id);
-                        return tool && (
-                          <Link to={`/tools/${tool.id}`} key={tool.id} className="flex items-start space-x-2 hover:text-purple-600 transition">
-                            <div className="text-2xl">{tool.icon}</div>
-                            <div>
-                              <h4 className="font-semibold text-sm">{tool.name}</h4>
-                              <p className="text-xs text-gray-500 dark:text-gray-400">{tool.description}</p>
-                            </div>
-                          </Link>
-                        );
-                      })}
-                    </div>
-                  </div>
+                  {/* Section 2: Edit & Organize */}
+                  {renderToolSection('Edit & Organize', [
+                    'merge-pdf', 'split-pdf', 'organize-pdf', 'edit-pdf', 'rotate-pdf', 'add-watermark'
+                  ])}
 
-                  {/* Secure PDF */}
-                  <div>
-                    <h3 className="text-lg font-semibold mb-3 text-purple-600">Secure PDF</h3>
-                    <div className="space-y-3">
-                      {['compress-pdf', 'unlock-pdf', 'protect-pdf'].map(id => {
-                        const tool = allTools.find(t => t.id === id);
-                        return tool && (
-                          <Link to={`/tools/${tool.id}`} key={tool.id} className="flex items-start space-x-2 hover:text-purple-600 transition">
-                            <div className="text-2xl">{tool.icon}</div>
-                            <div>
-                              <h4 className="font-semibold text-sm">{tool.name}</h4>
-                              <p className="text-xs text-gray-500 dark:text-gray-400">{tool.description}</p>
-                            </div>
-                          </Link>
-                        );
-                      })}
-                    </div>
-                  </div>
+                  {/* Section 3: Secure PDF */}
+                  {renderToolSection('Secure PDF', [
+                    'compress-pdf', 'unlock-pdf', 'protect-pdf'
+                  ])}
 
-                  {/* Utility Tools */}
+                  {/* Section 4: Utility Tools */}
                   <div>
-                    <h3 className="text-lg font-semibold mb-3 text-purple-600">Utility Tools</h3>
-                    <div className="space-y-3">
+                    <h3 className="text-lg font-semibold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Utility Tools</h3>
+                    <div className="space-y-4">
                       {allTools.filter(t => t.category === 'utility').map(tool => (
-                        <Link to={`/tools/${tool.id}`} key={tool.id} className="flex items-start space-x-2 hover:text-purple-600 transition">
-                          <div className="text-2xl">{tool.icon}</div>
-                          <div>
-                            <h4 className="font-semibold text-sm">{tool.name}</h4>
-                            <p className="text-xs text-gray-500 dark:text-gray-400">{tool.description}</p>
+                        <Link
+                          to={`/tools/${tool.id}`}
+                          key={tool.id}
+                          className="flex items-start gap-3 hover:text-cyan-400 transition"
+                        >
+                          <div className="text-2xl mt-1">{tool.icon}</div>
+                          <div className="space-y-0.5">
+                            <h4 className="font-medium text-sm leading-tight">{tool.name}</h4>
+                            <p className="text-xs text-gray-500 dark:text-gray-400 leading-snug">{tool.description}</p>
                           </div>
                         </Link>
                       ))}
@@ -162,6 +172,7 @@ const Header = ({ sidebarOpen, setSidebarOpen }) => {
                   </div>
                 </div>
               </div>
+
             </div>
 
             <Link to="/about" className="nav-link hover:text-purple-500 transition font-medium">About</Link>
