@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from 'react';
+import React,{ useRef, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaEnvelope, FaMapMarkerAlt, FaPhoneAlt, FaPaperPlane } from 'react-icons/fa';
 import emailjs from '@emailjs/browser';
