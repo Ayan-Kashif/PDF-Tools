@@ -21,7 +21,7 @@ const Footer = () => {
   const brandText = isDark ? 'text-white' : 'text-gray-900';
 
   return (
-    <footer className={`${bgColor} ${textColor} py-12 px-4 sm:px-6 lg:px-8 transition-colors duration-300`}>
+    <footer className={`${bgColor} ${textColor} py-40 px-4 sm:px-6 lg:px-8 transition-colors duration-300`}>
       <div className="max-w-7xl mx-auto">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
