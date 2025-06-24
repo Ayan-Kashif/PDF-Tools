@@ -1,121 +1,143 @@
-import React,{useEffect} from 'react';
+import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
-import { FaShieldAlt, FaLock, FaUserCog, FaDatabase, FaCookie } from 'react-icons/fa';
+import {
+  FaShieldAlt, FaLock, FaUserSecret, FaCookie, FaCloud, FaEnvelopeOpenText, FaLockOpen
+} from 'react-icons/fa';
 
 const PrivacyPolicy = () => {
-    useEffect(() => {
+  useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
+  const isDark = theme === 'dark';
+
+  const bgMain = isDark ? 'bg-gray-900 text-white' : 'bg-gray-100 text-gray-900';
+  const sectionBg = isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200';
+
   return (
-    <div className="privacy-policy-page">
+    <div className={`privacy-policy-page min-h-screen ${bgMain}`}>
       <Helmet>
-        <title>Privacy Policy | FIXI PDF</title>
+        <title>Privacy Policy | Fixi PDF</title>
         <meta name="description" content="Read our comprehensive privacy policy detailing how we collect, use, and protect your data." />
       </Helmet>
 
-      <header className="privacy-header">
-        <div className="container">
-          <h1 className="privacy-title text-cyan-400">
-            <FaShieldAlt className="shield-icon" /> Privacy Policy
-          </h1>
-          <p className="privacy-subtitle">Last updated: {new Date().toLocaleDateString()}</p>
-        </div>
+      {/* Hero Header */}
+      <header className="py-12 px-4 text-center bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-md">
+        <h1 className="text-4xl sm:text-5xl font-bold flex justify-center items-center gap-3 mb-2">
+          <FaShieldAlt className="text-white" /> Privacy Policy
+        </h1>
+        <p className="text-sm opacity-90">
+          Effective Date: 06/23/2025 | Last Updated: 06/23/2025
+        </p>
       </header>
 
-      <main className="privacy-content container">
-        <section className="privacy-section">
-          <div className="section-header">
-            <FaLock className="section-icon" />
-            <h2>Data Protection Commitment</h2>
-          </div>
-          <p>At FIXI PDF, we are committed to protecting your privacy and ensuring the security of your personal information. This policy outlines how we collect, use, and safeguard your data when you use our services.</p>
+      {/* Content */}
+      <main className="max-w-5xl mx-auto px-6 sm:px-10 py-12 space-y-12">
+        {[
+          {
+            icon: <FaLock />,
+            title: 'File Handling & Data Privacy',
+            content: [
+              'No File Storage: All files are auto-deleted from our servers within 1 hour after processing.',
+              'No File Access: We do not view, access, or share your uploaded content.',
+              'No Backups: Files are never stored in backup systems.',
+            ]
+          },
+          {
+            icon: <FaUserSecret />,
+            title: 'Personal Information',
+            content: [
+              'We do not require account creation or personal data to use our tools.',
+              'We may collect limited technical data such as:',
+              '- Browser type and version',
+              '- Device and OS details',
+              '- Referrer URL',
+              '- Date and time of access',
+              'This is only used for performance monitoring and security.'
+            ]
+          },
+          {
+            icon: <FaCookie />,
+            title: 'Cookies & Tracking',
+            content: [
+              'Fixi PDF may use cookies to:',
+              '- Enhance site functionality',
+              '- Analyze anonymized usage patterns',
+              '- Remember tool preferences (non-identifiable)',
+              'You can disable cookies in your browser at any time.'
+            ]
+          },
+          {
+            icon: <FaCloud />,
+            title: 'Third-Party Services',
+            content: [
+              'We use trusted third-party services (like analytics and cloud storage) that comply with modern data protection standards. These providers do not access your files.'
+            ]
+          },
+          {
+            icon: <FaEnvelopeOpenText />,
+            title: 'Contact & Communication',
+            content: [
+              'If you email us, we may retain your message to assist you better. We will never sell, rent, or share your email address.'
+            ]
+          },
+          {
+            icon: <FaLockOpen />,
+            title: 'Security Measures',
+            content: [
+              'All data is encrypted via HTTPS during transit.',
+              'Uploaded files are stored in secure, temporary environments.',
+              'Files are automatically deleted within 1 hour of processing.'
+            ]
+          },
+        ].map((section, index) => (
+          <section
+            key={index}
+            className={`rounded-xl border p-6 shadow-sm ${sectionBg}`}
+          >
+            <h2 className="text-2xl font-semibold flex items-center gap-3 mb-4 text-cyan-400">
+              {section.icon} {section.title}
+            </h2>
+            <ul className="list-disc pl-5 space-y-2 text-base">
+              {section.content.map((item, idx) => (
+                <li key={idx} className="">
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))}
+
+        {/* Changes Notice */}
+        <section className={`rounded-xl border p-6 shadow-sm ${sectionBg}`}>
+          <h2 className="text-2xl font-semibold mb-4 text-cyan-400">Changes to This Policy</h2>
+          <p className="text-base text-gray-700 dark:text-gray-300">
+            We may update this policy from time to time. Any changes will be reflected here, with the effective date clearly indicated.
+          </p>
         </section>
 
-        <section className="privacy-section">
-          <div className="section-header">
-            <FaUserCog className="section-icon" />
-            <h2>Information We Collect</h2>
-          </div>
-          <p>We may collect the following types of information:</p>
-          <ul className="privacy-list">
-            <li><strong>Personal Information:</strong> Name, email address, contact details when you register or contact us</li>
-            <li><strong>Usage Data:</strong> How you interact with our website and services</li>
-            <li><strong>Technical Data:</strong> IP address, browser type, device information</li>
-          </ul>
-        </section>
-
-        <section className="privacy-section">
-          <div className="section-header">
-            <FaDatabase className="section-icon" />
-            <h2>How We Use Your Information</h2>
-          </div>
-          <p>Your information helps us to:</p>
-          <ul className="privacy-list">
-            <li>Provide and improve our services</li>
-            <li>Respond to your inquiries and requests</li>
-            <li>Analyze usage patterns to enhance user experience</li>
-            <li>Ensure the security of our platform</li>
-            <li>Comply with legal obligations</li>
-          </ul>
-        </section>
-
-        <section className="privacy-section">
-          <div className="section-header">
-            <FaCookie className="section-icon" />
-            <h2>Cookies and Tracking</h2>
-          </div>
-          <p>We use cookies and similar tracking technologies to:</p>
-          <ul className="privacy-list">
-            <li>Remember your preferences</li>
-            <li>Analyze site traffic</li>
-            <li>Personalize content</li>
-          </ul>
-          <p>You can control cookies through your browser settings.</p>
-        </section>
-
-        <section className="privacy-section">
-          <h2>Data Sharing and Disclosure</h2>
-          <p>We do not sell your personal information. We may share data with:</p>
-          <ul className="privacy-list">
-            <li>Service providers who assist in our operations</li>
-            <li>Legal authorities when required by law</li>
-            <li>Business partners in anonymized, aggregated form</li>
-          </ul>
-        </section>
-
-        <section className="privacy-section">
-          <h2>Your Rights</h2>
-          <p>You have the right to:</p>
-          <ul className="privacy-list">
-            <li>Access, update, or delete your personal information</li>
-            <li>Object to or restrict certain data processing</li>
-            <li>Receive your data in a portable format</li>
-            <li>Withdraw consent where applicable</li>
-          </ul>
-        </section>
-
-        <section className="privacy-section">
-          <h2>Changes to This Policy</h2>
-          <p>We may update this policy periodically. We will notify you of significant changes through our website or email.</p>
-        </section>
-
-        <section className="privacy-section contact-section">
-          <h2>Contact Us</h2>
-          <p>If you have questions about this policy or your data:</p>
-          <p>Email: <a href="/">privacy@fixipdf.com</a></p>
+        {/* Contact Section */}
+        <section className={`rounded-xl border p-6 shadow-sm ${sectionBg}`}>
+          <h2 className="text-2xl font-semibold mb-4 text-cyan-400">Contact Us</h2>
+          <p className="text-base text-gray-700 dark:text-gray-300">
+            If you have any questions or concerns about this Privacy Policy, feel free to contact us at:{' '}
+            <a href="mailto:support@fixipdf.com" className="text-cyan-400 hover:underline">support@fixipdf.com</a>
+          </p>
         </section>
       </main>
 
-      <footer className="privacy-footer">
-        <div className="container">
-          <Link to="/" className="back-home">← Back to Home</Link>
-          <p className="copyright">© {new Date().getFullYear()} FIXI PDF. All rights reserved.</p>
-        </div>
+      {/* Footer */}
+      <footer className="border-t pt-6 pb-12 text-center text-sm text-gray-500 dark:text-gray-400">
+        <Link to="/" className="text-cyan-500 hover:underline block mb-2">
+          ← Back to Home
+        </Link>
+        <p>© {new Date().getFullYear()} Fixi PDF. All rights reserved.</p>
       </footer>
     </div>
   );
 };
 
 export default PrivacyPolicy;
+
