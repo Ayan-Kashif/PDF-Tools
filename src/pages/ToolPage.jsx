@@ -132,7 +132,7 @@ export const toolDetails = {
 
 
 
-  "unit-convertor": {
+  "unit-converter": {
     "overview": "Convert kilometers to miles, Celsius to Fahrenheit, kilograms to pounds, and more—all in one tool.",
     "features": [
       "Length, weight, volume, area",
