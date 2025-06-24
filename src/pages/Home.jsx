@@ -119,10 +119,10 @@ const navigate = useNavigate();
       {/* Why Fixi PDF Section */}
       <section className={`${isDark ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'} relative overflow-hidden py-24`}>
         {/* Optional SVG Glow Background */}
-        <div className="absolute inset-0 pointer-events-none">
+{/*         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute w-[300px] h-[300px] bg-cyan-500 opacity-10 rounded-full blur-3xl top-0 -left-24 animate-pulse"></div>
           <div className="absolute w-[200px] h-[200px] bg-blue-500 opacity-10 rounded-full blur-2xl bottom-0 right-0 animate-pulse delay-200"></div>
-        </div>
+        </div> */}
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16 relative z-10">
           <div className="text-center">
