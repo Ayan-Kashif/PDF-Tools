@@ -15,6 +15,7 @@ import ToolPage from './pages/ToolPage';
 import './styles/globals.css';
 import './styles/theme.css';
 
+import HowItWorks from './pages/how-it-works';
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [activeTool, setActiveTool] = useState(null);
@@ -50,6 +51,7 @@ function App() {
               <Route path="/contact" element={<Contact />} />
               <Route path="/privacy" element={<PrivacyPolicy />} />
               <Route path="/terms" element={<TermsOfService />} />
+              <Route path="/how-it-works" element={<HowItWorks />} />
             </Routes>
           </div>
         </div>
@@ -58,5 +60,7 @@ function App() {
     </Router>
   );
 }
+
+export default App;
 
 export default App;
