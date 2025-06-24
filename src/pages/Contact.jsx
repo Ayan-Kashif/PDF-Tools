@@ -1,6 +1,6 @@
-import React,{ useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FaEnvelope, FaMapMarkerAlt, FaPhoneAlt, FaPaperPlane } from 'react-icons/fa';
+import { FaEnvelope, FaPaperPlane } from 'react-icons/fa';
 import emailjs from '@emailjs/browser';
 
 export default function Contact() {
@@ -13,10 +13,10 @@ export default function Contact() {
     const localTheme = localStorage.getItem('theme');
     if (localTheme) setTheme(localTheme);
   }, []);
-    useEffect(() => {
+
+  useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
 
   const handleSendEmail = (e) => {
     e.preventDefault();
@@ -26,7 +26,7 @@ export default function Contact() {
         import.meta.env.VITE_SERVICE_ID,
         import.meta.env.VITE_TEMPLATE_ID,
         formRef.current,
-        { publicKey: 'hEYzmd9xr6zsNYAga' }
+        { publicKey: import.meta.env.VITE_PUBLIC_KEY }
       )
       .then(
         () => {
@@ -42,27 +42,6 @@ export default function Contact() {
       );
   };
 
-  const contactMethods = [
-    {
-      icon: <FaEnvelope className="text-2xl text-cyan-400" />,
-      title: "Email Us",
-      detail: "support@pdftoolshub.com",
-      action: "mailto:support@pdftoolshub.com",
-    },
-    {
-      icon: <FaMapMarkerAlt className="text-2xl text-cyan-400" />,
-      title: "Visit Us",
-      detail: "123 Tech Park, Silicon Valley",
-      action: "https://maps.google.com",
-    },
-    {
-      icon: <FaPhoneAlt className="text-2xl text-cyan-400" />,
-      title: "Call Us",
-      detail: "+1 (555) 123-4567",
-      action: "tel:+15551234567",
-    },
-  ];
-
   const isDark = theme === 'dark';
   const cardBg = isDark ? 'bg-gray-800 text-white' : 'bg-white text-gray-800';
   const border = isDark ? 'border-gray-700' : 'border-gray-300';
@@ -76,30 +55,33 @@ export default function Contact() {
       transition={{ duration: 0.5 }}
       className="max-w-6xl mx-auto px-4 py-8"
     >
+      {/* Header */}
       <div className="text-center mb-12">
         <h1 className="text-4xl font-bold text-cyan-400 mb-4">Contact Us</h1>
         <p className={`text-xl ${textMuted} max-w-3xl mx-auto`}>
-          Have questions or feedback? We'd love to hear from you!
+          Have a question, suggestion, or need support? We’d love to hear from you!
+          <br />
+          Our team is here to help with any issues or feedback related to Fixi PDF.
         </p>
       </div>
 
       <div className="grid md:grid-cols-2 gap-8">
-        {/* Left: Contact Methods */}
+        {/* Left: Email Contact Method */}
         <div className="space-y-6">
-          {contactMethods.map((method, index) => (
-            <motion.a
-              key={index}
-              whileHover={{ x: 5 }}
-              href={method.action}
-              className={`flex items-start gap-4 p-4 rounded-lg border ${border} ${cardBg} hover:border-cyan-400 transition-all`}
-            >
-              <div className="mt-1">{method.icon}</div>
-              <div>
-                <h3 className="text-lg font-semibold">{method.title}</h3>
-                <p className={textMuted}>{method.detail}</p>
-              </div>
-            </motion.a>
-          ))}
+          <motion.a
+            whileHover={{ x: 5 }}
+            href="mailto:support@fixipdf.com"
+            className={`flex items-start gap-4 p-4 rounded-lg border ${border} ${cardBg} hover:border-cyan-400 transition-all`}
+          >
+            <div className="mt-1">
+              <FaEnvelope className="text-2xl text-cyan-400" />
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold">Email Support</h3>
+              <p className={textMuted}>support@fixipdf.com</p>
+              <p className={`text-sm mt-1 ${textMuted}`}>We aim to respond within 24 hours on business days.</p>
+            </div>
+          </motion.a>
         </div>
 
         {/* Right: Contact Form */}
