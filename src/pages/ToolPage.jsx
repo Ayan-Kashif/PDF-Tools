@@ -95,7 +95,7 @@ export const toolDetails = {
   },
 
 
-  "bmi-alculator": {
+  "bmi-calculator": {
     "overview": "Use our BMI Calculator to check your body weight category. Fast, free, and suitable for men and women of all ages.",
     "features": [
       "Metric and imperial support",
@@ -132,7 +132,7 @@ export const toolDetails = {
 
 
 
-  "unit-onvertor": {
+  "unit-convertor": {
     "overview": "Convert kilometers to miles, Celsius to Fahrenheit, kilograms to pounds, and more—all in one tool.",
     "features": [
       "Length, weight, volume, area",
