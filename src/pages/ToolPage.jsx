@@ -669,7 +669,7 @@ const ToolPage = () => {
             className="inline-flex items-center gap-3 px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white text-lg font-semibold rounded-xl shadow-lg transition"
           >
             <FaRocket />
-            Upload Files
+            { tool.category==='utility' ?'Get Started':'Upload Files'}
           </button>
         </div>
         {/* Overview */}
