@@ -258,7 +258,7 @@ export const toolDetails = {
 
 
   "unlock-pdf": {
-    "overview": "Tired of typing a password every time you open a PDF? Use Fixi PDF’s Unlock PDF tool topermanently remove password protection and make your document freely accessible.",
+    "overview": "Tired of typing a password every time you open a PDF? Use Fixi PDF’s Unlock PDF tool to permanently remove password protection and make your document freely accessible.",
     "features": [
       "Unlock PDFs secured with open/view passwords",
       "No downloads or installations",
