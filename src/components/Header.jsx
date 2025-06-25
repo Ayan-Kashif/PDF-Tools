@@ -104,7 +104,7 @@ const Header = ({ sidebarOpen, setSidebarOpen }) => {
               {sidebarOpen ? <FaTimes /> : <FaBars />}
             </button>
             <Link to="/" className="flex items-center space-x-2">
-              <img src="/logo.png" className='w-[160px]' alt="" />
+              <img onClick={() => setActiveTool(null)} src="/logo.png" className='w-[160px]' alt="" />
             </Link>
           </div>
 
