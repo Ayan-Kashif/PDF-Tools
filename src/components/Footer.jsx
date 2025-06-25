@@ -59,7 +59,7 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <a href="https://fixipdf.blog.com" className={`${linkColor} transition-colors duration-200`}>
+                <a href="https://blog.flexipdf.com" className={`${linkColor} transition-colors duration-200`}>
                   Blog
                 </a>
               </li>
